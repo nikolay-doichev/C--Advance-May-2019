@@ -1,0 +1,39 @@
+﻿namespace BoxOfT
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    public class Box<T>
+    {
+        private List<T> boxItems;
+
+        public int Count
+        {
+            get
+            {
+                return boxItems.Count;
+            }
+        }
+        public Box()
+        {
+            boxItems = new List<T>();
+        }
+
+        public void Add(T element)
+        {
+            boxItems.Add(element);
+        }
+        public T Remove()
+        {
+            if (boxItems.Count > 0)
+            {
+                T lastElement = boxItems.Last();
+                boxItems.RemoveAt(Count - 1);
+
+                return lastElement;
+            }
+            throw new InvalidOperationException("Can not remove from empty collection");
+        }
+    }
+}
